@@ -1,5 +1,6 @@
 <script lang="ts">
   import bg from './assets/bg.webm'
+  import bg_poster from './assets/bg_poster.jpg'
   import Navbar from "./lib/Navbar.svelte";
   import Hero from "./lib/Hero.svelte";
   import About from "./lib/About.svelte";
@@ -70,6 +71,7 @@
       <video
               src="{bg}"
               class="bgvideo"
+              poster="{bg_poster}"
               autoPlay
               loop
               muted
