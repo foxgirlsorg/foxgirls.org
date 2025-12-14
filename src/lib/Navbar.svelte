@@ -1,11 +1,10 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import { Menu, X } from "@lucide/svelte";
     import { fade } from "svelte/transition";
     import Logo from "./Logo.svelte";
 
-    let isScrolled = false;
-    let mobile = false;
+    let isScrolled = $state(false);
+    let mobile = $state(false);
 
     const navLinks = [
         { name: "Home", href: "#" },
@@ -17,22 +16,20 @@
     const openMenu = () => (mobile = true);
     const closeMenu = () => (mobile = false);
 
-    $: {
+    $effect(() => {
         document.body.style.overflow = mobile ? "hidden" : "";
-    }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    });
 
-    onMount(() => {
+    $effect(() => {
         const scrollHandler = () => {
-            const next = window.scrollY > 20;
-            if (next !== isScrolled) isScrolled = next;
+            isScrolled = window.scrollY > 20;
         };
 
         window.addEventListener("scroll", scrollHandler, { passive: true });
-
-        return () => {
-            window.removeEventListener("scroll", scrollHandler);
-            document.body.style.overflow = "";
-        };
+        return () => window.removeEventListener("scroll", scrollHandler);
     });
 </script>
 
