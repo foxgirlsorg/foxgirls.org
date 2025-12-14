@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 .bgNoise {
   position: absolute;
   inset: 0;
-  background-image: url("/public/noise.svg");
+  background-image: url("./assets/noise.svg");
   opacity: 0.2;
   mix-blend-mode: overlay;
 }
