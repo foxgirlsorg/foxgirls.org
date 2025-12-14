@@ -50,7 +50,7 @@
                 class="mobileButton"
                 aria-label="Open menu"
                 aria-expanded={mobile}
-                on:click={openMenu}
+                onclick={openMenu}
         >
             <Menu size={26} />
         </button>
@@ -67,14 +67,14 @@
         <button
                 class="mobileCloseButton"
                 aria-label="Close menu"
-                on:click={closeMenu}
+                onclick={closeMenu}
         >
             <X size={26} />
         </button>
         <div class="mobileMenuContent" transition:fade={{ duration: 200 }}>
 
             {#each navLinks as link}
-                <a href={link.href} on:click={closeMenu}>
+                <a href={link.href} onclick={closeMenu}>
                     {link.name}
                 </a>
             {/each}
