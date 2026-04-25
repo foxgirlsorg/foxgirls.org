@@ -1,21 +1,16 @@
 <script lang="ts">
     import { Code, Shield, Heart } from "@lucide/svelte";
+    import { t } from "./i18n";
 
     const features = [
         {
-            icon: Code,
-            title: "Open Source",
-            desc: "(Almost) all our project are opensource and can be used by anyone."
+            icon: Code
         },
         {
-            icon: Shield,
-            title: "Independent",
-            desc: "We are a self-funded team free from corporate influence, building tools we love."
+            icon: Shield
         },
         {
-            icon: Heart,
-            title: "Believers",
-            desc: "We believe in foxgirls supremacy."
+            icon: Heart
         }
     ];
 </script>
@@ -29,24 +24,24 @@
 
             <div class="content-wrapper">
                 <h2>
-                    about <span class="highlight">us</span>
+                    {$t.about.title} <span class="highlight">{$t.about.highlight}</span>
                 </h2>
 
                 <div class="divider"></div>
 
                 <p class="description">
-                    <span class="white-text">foxgirls.org</span> is a small dev "team". <br>
-                    Just friends united by shitcoding and anime foxgirls.
+                    {$t.about.descriptionLine1} <br>
+                    {$t.about.descriptionLine2}
                 </p>
 
                 <div class="features-grid">
-                    {#each features as item}
+                    {#each features as item, index}
                         <div class="feature-item">
                             <div class="icon-circle">
                                 <svelte:component this={item.icon} size={20} />
                             </div>
-                            <h3>{item.title}</h3>
-                            <p>{item.desc}</p>
+                            <h3>{$t.about.features[index].title}</h3>
+                            <p>{$t.about.features[index].description}</p>
                         </div>
                     {/each}
                 </div>
@@ -117,11 +112,6 @@
         font-weight: 400;
     }
 
-    .white-text {
-        color: white;
-        font-weight: 500;
-    }
-
     .divider {
         width: 3rem;
         height: 2px;
@@ -189,7 +179,7 @@
         font-size: 0.75rem;
         line-height: 1rem;
         color: #6b7280;
-        font-weight: 300;
+        font-weight: 401;
     }
 
     @media (min-width: 768px) {

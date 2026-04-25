@@ -1,11 +1,10 @@
 <script lang="ts">
-    import { Layout, Users, Heart, FileText, ExternalLink } from "@lucide/svelte";
+    import { Users, Heart, ExternalLink } from "@lucide/svelte";
+    import { t } from "./i18n";
 
     interface ProjectItem {
         id: string;
         title: string;
-        type: string;
-        description: string;
         imageUrl: string;
         mainLink: string;
         icon: any;
@@ -13,29 +12,16 @@
 
     const projectsList: ProjectItem[] = [
         {
-            id: 'foxtrack',
-            title: 'Foxtrack',
-            type: 'website',
-            icon: Layout,
-            description: "Our fork of Yamtrack. An open-source media tracker for your anime and manga progress.",
-            imageUrl: '/foxtrack.jpg',
-            mainLink: 'https://track.foxgirls.org/',
-        },
-        {
             id: 'redtail',
             title: 'Redtail',
-            type: 'Team',
             icon: Users,
-            description: "Our manga translation team. High-quality translation, cleaning and typesetting.",
             imageUrl: '/redtail.jpg',
             mainLink: 'https://redtail.foxgirls.org/',
         },
         {
             id: 'foxgirls-club',
             title: 'Foxgirls.club',
-            type: 'API',
             icon: Heart,
-            description: "An API full of foxgirls.",
             imageUrl: '/foxgirlsclub.jpg',
             mainLink: 'https://foxgirls.club/',
         }
@@ -48,16 +34,16 @@
         <div class="header">
             <div>
                 <h2>
-                    our <span class="highlight">projects</span>
+                    {$t.projects.title} <span class="highlight">{$t.projects.highlight}</span>
                 </h2>
             </div>
             <div class="subtitle">
-                Explore our universe
+                {$t.projects.subtitle}
             </div>
         </div>
 
         <div class="projects-list">
-            {#each projectsList as item}
+            {#each projectsList as item, index}
                 <a
                         href={item.mainLink}
                         target="_blank"
@@ -73,12 +59,12 @@
                         <div class="info-side">
                             <div class="meta-tag">
                                 <svelte:component this={item.icon} size={16} />
-                                <span>{item.type}</span>
+                                <span>{$t.projects.items[index].type}</span>
                             </div>
 
                             <h3>{item.title}</h3>
 
-                            <p class="description">{item.description}</p>
+                            <p class="description">{$t.projects.items[index].description}</p>
                         </div>
 
                         <div class="action-side">
@@ -226,7 +212,7 @@
         color: #de6161;
         font-size: 0.75rem;
         line-height: 1rem;
-        font-weight: 700;
+        font-weight: 701;
         text-transform: uppercase;
         letter-spacing: 0.1em;
     }
@@ -285,6 +271,7 @@
 
     .description {
         max-width: 70%;
+        font-weight: 301;
     }
 
     @media (min-width: 768px) {

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Send, Mail, Globe } from '@lucide/svelte';
+    import { t } from "./i18n";
 
     interface TeamMember {
         id: string;
@@ -36,7 +37,7 @@
         <div class="header">
             <div>
                 <h2>
-                    our <span class="highlight">Team</span>
+                    {$t.team.title} <span class="highlight">{$t.team.highlight}</span>
                 </h2>
             </div>
         </div>
@@ -62,7 +63,8 @@
                                         href={member.telegram}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        title="Telegram"
+                                        title={$t.team.telegram}
+                                        aria-label={$t.team.telegram}
                                 >
                                     <Send size={18} />
                                 </a>
@@ -71,7 +73,8 @@
                             {#if member.email}
                                 <a
                                         href={`mailto:${member.email}`}
-                                        title="Email"
+                                        title={$t.team.email}
+                                        aria-label={$t.team.email}
                                 >
                                     <Mail size={18} />
                                 </a>
@@ -82,7 +85,8 @@
                                         href={member.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        title="Website"
+                                        title={$t.team.website}
+                                        aria-label={$t.team.website}
                                 >
                                     <Globe size={18} />
                                 </a>

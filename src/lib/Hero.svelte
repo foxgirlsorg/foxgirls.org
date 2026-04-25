@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Github, Send, Mail, ChevronDown } from "@lucide/svelte";
     import { fly } from "svelte/transition";
+    import { t } from "./i18n";
 
     const socialLinks = [
         {
@@ -50,7 +51,7 @@
         </div>
     </div>
 
-    <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+    <a href="#about" class="scroll-indicator" aria-label={$t.hero.scrollDown}>
         <ChevronDown size={24} />
     </a>
 </section>
@@ -82,12 +83,6 @@
         line-height: 1;
         margin-bottom: 2rem;
         font-size: 3rem;
-    }
-
-    /* Restored the highlight class so .ORG is red */
-    .highlight {
-        color: #de6161;
-        font-weight: 400;
     }
 
     .social-links {

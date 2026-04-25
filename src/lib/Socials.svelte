@@ -1,26 +1,18 @@
 <script lang="ts">
     import { ArrowUpRight, Github, Send} from "@lucide/svelte";
     import Logo from "./Logo.svelte";
+    import { t } from "./i18n";
 
     const platforms = [
         {
-            id: 'foxgirls',
-            title: 'Foxgirls.org',
-            description: 'Main Portal',
-            link: 'https://foxgirls.org',
-            icon: null
-        },
-        {
             id: 'telegram',
             title: 'Telegram',
-            description: 'Channel',
             link: 'https://t.me/foxgirlsorg',
             icon: Send
         },
         {
             id: 'github',
             title: 'GitHub',
-            description: 'Open Source',
             link: 'https://github.com/foxgirlsorg',
             icon: Github
         }
@@ -32,12 +24,12 @@
 
         <div class="separator">
             <div class="line"></div>
-            <h2>Platforms & Socials</h2>
+            <h2>{$t.socials.title}</h2>
             <div class="line"></div>
         </div>
 
         <div class="grid">
-            {#each platforms as project}
+            {#each platforms as project, index}
                 <a
                         href={project.link}
                         target="_blank"
@@ -56,7 +48,7 @@
                         </div>
 
                         <h3>{project.title}</h3>
-                        <p>{project.description}</p>
+                        <p>{$t.socials.items[index].description}</p>
                     </div>
 
                     <div class="arrow-icon">
@@ -107,14 +99,17 @@
     }
 
     .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1.5rem;
     }
 
     .card {
         position: relative;
         height: 8rem;
+        flex: 0 1 min(24rem, 100%);
+        width: 100%;
         overflow: hidden;
         border-radius: 0.5rem;
         background-color: rgba(15, 15, 17, 0.6);
@@ -184,6 +179,7 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         margin-top: 0.25rem;
+        font-weight: 401;
     }
 
     .arrow-icon {
@@ -206,8 +202,10 @@
     }
 
     @media (min-width: 768px) {
-        .grid {
-            grid-template-columns: repeat(3, 1fr);
+        .card {
+            width: auto;
+            flex-basis: calc((100% - 3rem) / 3);
+            max-width: calc((100% - 3rem) / 3);
         }
     }
 </style>
