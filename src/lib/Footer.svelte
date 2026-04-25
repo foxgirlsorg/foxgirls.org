@@ -4,7 +4,7 @@
 
 <footer>
     <div class="copyright">
-        foxgirls.org © {currentYear}
+        foxgirls.org © {currentYear} <span class="separator">•</span> Designed by <a href="https://nullaxis.dev/" target="_blank" rel="noopener noreferrer">NullAxis</a>
     </div>
 </footer>
 
@@ -24,4 +24,16 @@
         letter-spacing: 0.2em;
         text-transform: uppercase;
     }
+    a {
+        text-decoration: none;
+        color: inherit;
+        transition: .3s;
+        &:hover {
+            color: #de6161
+        }
+    }
+    .separator {
+        margin: 0 10px;
+    }
+
 </style>
