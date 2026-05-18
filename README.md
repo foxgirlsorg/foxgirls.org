@@ -59,6 +59,23 @@ This repository is configured for Continuous Deployment (CD). Changes pushed to 
 
 > **Note:** The custom domain configuration is managed via the `public/CNAME` file. Ensure this file is maintained to prevent domain resets during the deployment process.
 
+### Environment Variables
+
+The following environment variables are required for the build:
+
+| Variable | Description |
+|---|---|
+| `VITE_UMAMI_URL` | URL of your Umami instance (e.g. `https://analytics.yourdomain.com`) |
+| `VITE_UMAMI_WEBSITE_ID` | Website ID from your Umami dashboard |
+
+For local development, create a `.env.local` file in the project root (already gitignored):
+```env
+VITE_UMAMI_URL=https://analytics.yourdomain.com
+VITE_UMAMI_WEBSITE_ID=your-website-id-here
+```
+
+For GitHub Actions, add these as repository secrets under **Settings → Secrets and variables → Actions**.
+
 ## 📂 Project Structure
 
 ```text
